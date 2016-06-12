@@ -1,0 +1,31 @@
+<div class="form-group col-sm-12 col-md-12 col-lg-12 col-xs-12">
+	<a href="#menu" class="btn btn-primary" >Go back to Menu</a>
+</div>
+<div class="container-fluid">
+	<h4>Search Employee :- <span><input type="text" ng-model="searchEmployee"/></span></h4>
+</div>
+<p ng-show="empMsg" class="text-danger" ng-bind="empMsg"></p>
+<table class="table">
+  <thead>
+	<tr>
+	<td>First Name</td>
+	<td>Last Name</td>
+	<td>Email</td>
+	<td>Contact Number</td>
+	<td>Action</td>
+	</tr>
+  <thead>
+  <tbody>
+	<tr ng-repeat="emp in emplist | filter:searchEmployee">
+		<td>{{emp.fname}}</td>
+		<td>{{emp.lname}}</td>
+		<td>{{emp.email}}</td>
+		<td>{{emp.contactnum}}</td>
+		<td>
+			<button type="button" class="btn btn-lg" ng-click="removeEmployee(emp)">
+				<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+			</button>
+		</td>
+	</tr>
+  </tbody>
+</table>

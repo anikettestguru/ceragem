@@ -1,0 +1,36 @@
+<form name="loginForm" ng-submit="loginForm.$valid && submitAction({user: user})" class="form-signin" novalidate>
+
+    <h2 class="form-signin-heading" ng-bind="'Log in'"></h2>
+
+    <!--Email input-->
+    <input ng-model="user.email" ng-model-options="{ updateOn: 'default blur', debounce: { default: 1000, blur: 0 } }" type="text" name="email" class="form-control" placeholder="Email address" required autofocus>
+
+    <!--Email error-->
+    <div ng-show="loginForm.$submitted">
+        <p ng-show="loginForm.email.$error.required" class="text-danger">Email required</p>
+        <p ng-show="loginForm.email.$error.email" class="text-danger">Please enter a valid email.</p>
+    </div>
+
+    <!--Password input-->
+    <input ng-model="user.password" type="password" name="password" class="form-control" placeholder="Password" required>
+
+	<!--User role -->
+	<!--<div ng-init="vm.user.role='admin'">
+	  <label>
+		<input type="radio" name="role" value="admin" ng-model="vm.user.role">
+		Administrator
+	  </label>
+	  <label>
+		<input type="radio" name="role" value="user" ng-model="vm.user.role">
+		User
+	  </label>
+	</div>-->
+
+    <!--Password error-->
+    <div ng-show="loginForm.$submitted">
+        <p ng-show="loginForm.password.$error.required" class="text-danger">Password required</p>
+    </div>
+	<p ng-show="errorMessage" class="text-danger" ng-bind="errorMessage"></p>
+	
+    <button class="btn btn-lg btn-primary btn-block" ng-bind="'Log in'" ng-click="login(user)" >Login</button>
+</form>
